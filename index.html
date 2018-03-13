@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>20k</title>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                let socket = io();
+                let cost = {};
+                let total = document.getElementById('total');
+
+                document.getElementById("vigilante").addEventListener("click", () => socket.emit('destroy', 'vigilante'));
+                document.getElementById("khanjali").addEventListener("click", () => socket.emit('destroy', 'khanjali'));
+                document.getElementById("tampa").addEventListener("click", () => socket.emit('destroy', 'tampa'));
+
+                socket.on('update', updatedCost => {
+                    cost = updatedCost;
+                    total.innerText = `Vigilante:\t${cost.vigilante*20}k\nKhanjali:\t${cost.khanjali*20}k\nTampa:\t${cost.tampa*20}k`;
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h1>What did you break?</h1>
+        <button type="button" id="vigilante">Vigilante</button>
+        <button type="button" id="khanjali">Khanjali</button>
+        <button type="button" id="tampa">Tampa</button>
+        <h2 id="total"></h2>
+    </body>
+</html>
