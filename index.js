@@ -26,7 +26,7 @@ io.on('connection', socket => {
     socket.emit('update', cost);
 
     socket.on('destroy', vehicle => {
-        cost[vehicle]++;
+        cost[vehicle] += 10;
         socket.emit('update', cost);
         fs.writeFile('cost.json', JSON.stringify(cost), err => {if (err) console.log(err);});
     });
