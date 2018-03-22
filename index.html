@@ -13,10 +13,12 @@
                 document.getElementById("vigilante").addEventListener("click", () => socket.emit('destroy', 'vigilante'));
                 document.getElementById("khanjali").addEventListener("click", () => socket.emit('destroy', 'khanjali'));
                 document.getElementById("tampa").addEventListener("click", () => socket.emit('destroy', 'tampa'));
+                document.getElementById("apc").addEventListener("click", () => socket.emit('destroy', 'apc'));
+
 
                 socket.on('update', updatedCost => {
                     cost = updatedCost;
-                    total.innerText = `Vigilante:\t${cost.vigilante}k\nKhanjali:\t${cost.khanjali}k\nTampa:\t${cost.tampa}k`;
+                    total.innerText = `Vigilante:\t${cost.vigilante}k\nKhanjali:\t${cost.khanjali}k\nTampa:\t${cost.tampa}k\nAPC:\t${cost.apc}k`;
                 });
             });
         </script>
@@ -26,6 +28,7 @@
         <button type="button" id="vigilante">Vigilante</button>
         <button type="button" id="khanjali">Khanjali</button>
         <button type="button" id="tampa">Tampa</button>
+        <button type="button" id="apc">APC</button>
         <h2 id="total"></h2>
     </body>
 </html>
