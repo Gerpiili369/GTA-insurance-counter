@@ -15,7 +15,7 @@ app.get('/', (req,res) => {
     res.sendFile(__dirname+'/index.html');
 });
 
-var cost = {vigilante:0,khanjali:0,tampa:0,apc:0};
+var cost = {vigilante:0,khanjali:0,tampa:0,apc:0,oppressor:0};
 
 fs.readFile('cost.json', 'utf-8', (err,data) => {
     if (!err) cost = JSON.parse(data);
